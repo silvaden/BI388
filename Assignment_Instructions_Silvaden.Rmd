@@ -75,6 +75,25 @@ Place your code in the block below, make sure that it runs before submission.
 ```
 
 Write a few words about the difference between the two graphs.
+
+## Rubric
+
+\begin{tabular}{ | p{2cm} | p{3cm} | p{3cm} | p{4cm} | c | }
+\hline  
+ Task & Meets expectations & Meets some expectations & Does not meet expectations & Points \\
+ \hline 
+ Rmd File & Rmd file runs as intendent & Rmd file is turned in but does not run & Rmd file missing & 3 \\
+ \hline
+ pdf File & pdf file present &  & pdf absent & 3 \\
+ \hline
+ New Graph & New graph is present and different from the graph originally presented & New graph is present but not different than the graph originally presented & No new graph is presented & 5 \\
+ \hline
+ Difference between graphs & Difference between graphs is indentified and discussed & Difference between graphs is identified and discussed & Difference between graphs is not identified nor discussed & 5 \\
+\hline
+Total & & & & 16 \\
+\hline
+\end{tabular}
+
 ## References
 
 Adapted from:
