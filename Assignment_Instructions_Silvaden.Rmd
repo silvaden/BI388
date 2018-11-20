@@ -1,0 +1,82 @@
+---
+title: "Learning Activity 3"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+## This is required to run the simulation in class today
+require('DSAIDE')
+library('DSAIDE')
+```
+
+# Introduction
+
+By the end of today you will be able to graph modeled data using R. This will include specifying the elements that go into the plot, changing the names of the axes, and adding a legend.
+
+Since you have already installed RStudio and know how to knit a .pdf in RMarkdown, you will be turning in the .pdf and the .rmd with the questions/blanks filled in. If you have any trouble compiling this file, please let me know ASAP via email @ silvaden@oregonstate.edu.
+
+To run a 'chunk' of code, by presseing the green triangle in each grey box. Run each chunk of code before compiling so that you know what each step is doing, and that each step works.
+
+For submission, you will turn in BOTH the .rmd with your own code as well as the .pdf that is created by the code. These should be turned in to Canvas and the .rmd should be executable by your instructor. Failure to create an executable file will result in no credit.
+
+# Step 1: Generate model data
+
+Today we will be using the 'DSAIDE' package that we introduced last class. However, instead of using the GUI, we will be focused on command line tools for both data generation and data visualization.
+
+For the first step, simulate infection data using the `simulate_introduction` command to create the data. Run the next block now:
+
+```{r}
+result <- simulate_introduction(S0=500, I0 = 5, tmax = 100, g = 0.1, b = 1/2500)
+```
+
+Answer the following questions:
+
+How many initial susceptible individuals are there in this simulation?
+
+What is the rate of transmission (b)?
+
+
+# Step 2: Plot the curve of the susceptible individuals.
+
+The first curve we want to examine is how the population of susceptible people change over time. To do this, we will use the 'plot' command, specifically we will be plotting the time, `result$ts$Time`, on the x-axis and the number of susceptible individuals, `result$ts$S`, on the y-axis. Make sure to label the axes using appropriate names.
+
+```{r}
+plot(result$ts$Time, result$ts$S, xlab = 'Time', ylab = 'Number of Individuals',
+     type = 'l', col = 'blue',ylim = c(0,500))
+```
+
+# Step 3: Add the curves for infected individuals, `result$ts$I`, and recovered individuals, `result$ts$R`, to the plot using the `lines()` command.
+
+```{r}
+plot(result$ts$Time, result$ts$S,xlab = 'Time', ylab = 'Number of Individuals',
+    type = 'l', col = 'blue',ylim = c(0,500))
+lines(result$ts$Time, result$ts$I, col = 'red', lty = 2)
+lines(result$ts$Time, result$ts$R, col = 'black', lty = 3)
+```
+
+# Step 4: Add a legend so that the graph can be more easily read
+
+```{r}
+plot(result$ts$Time, result$ts$S,xlab = 'Time', ylab = 'Number of Individuals',
+    type = 'l', col = 'blue',ylim = c(0,500))
+lines(result$ts$Time, result$ts$I, col = 'red', lty = 2)
+lines(result$ts$Time, result$ts$R, col = 'black', lty = 3)
+legend('top', c('Susceptible','Infected','Recovered'),lty = c(1,2,3), lwd = 2,
+       bty = 'n', col = c('blue','red','black'))
+```
+
+# Step 5: Create a new graph using a different rate of transmission.
+
+Place your code in the block below, make sure that it runs before submission.
+
+```{r}
+
+```
+
+Write a few words about the difference between the two graphs.
+## References
+
+Adapted from:
+
+Handel A. 2017. Learning infectious disease epidemiology in a modern framework. *PLoS Computational Biology* **13(10)**: e1005642
